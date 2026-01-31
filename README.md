@@ -26,17 +26,12 @@ Ouvrir http://localhost:3000
 
 ## Déploiement sur Render
 
-1. Créer un compte sur [render.com](https://render.com)
-2. Connecter votre dépôt GitHub
-3. Créer un nouveau **Web Service**
-4. Choisir ce dépôt
-5. Render détectera automatiquement :
-   - **Build Command** : `npm install`
-   - **Start Command** : `npm start`
-6. Déployer
+⚠️ **Important** : Créer un **Web Service** (et non un Static Site). Voir [DEPLOY.md](DEPLOY.md) pour les instructions détaillées.
 
-### Avec render.yaml (Blueprint)
+### Résumé rapide
+1. [render.com](https://render.com) → **New** → **Web Service** (ou **Blueprint**)
+2. Connecter le dépôt GitHub
+3. Build : `npm install` | Start : `npm start`
+4. Ne pas définir de "Publish Directory"
 
-Si vous utilisez le fichier `render.yaml`, Render configurera automatiquement le service.
-
-> **Note** : Sur Render (plan gratuit), le système de fichiers est éphémère. Les données JSON sont perdues au redémarrage du service. Pour une persistance durable, envisagez d'ajouter une base de données PostgreSQL (gratuite sur Render).
+> **Note** : Sur Render (plan gratuit), le système de fichiers est éphémère. Les données JSON sont perdues au redémarrage. Pour une persistance durable, envisagez PostgreSQL (gratuit sur Render).

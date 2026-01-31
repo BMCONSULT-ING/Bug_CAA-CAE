@@ -4,9 +4,10 @@ services:
     runtime: node
     plan: free
 
+    # IMPORTANT: Web Service Node.js - pas de "publish directory"
     buildCommand: npm install
     startCommand: npm start
 
     envVars:
       - key: NODE_VERSION
-        value: 18
+        value: "18"
