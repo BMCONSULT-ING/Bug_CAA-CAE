@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +7,11 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <nav class="main-nav">
+    <a href="/" class="nav-link active">Formulaire</a>
+    <a href="/rapports.html" class="nav-link">Rapports</a>
+    <button type="button" id="themeToggle" class="btn-theme" onclick="toggleTheme()" aria-label="Changer de thème">🌙 Mode sombre</button>
+  </nav>
   <div class="container">
     <header>
       <h1>Suivi CAA / CAE</h1>
@@ -24,12 +29,12 @@
             </select>
           </div>
           <div class="form-group">
-            <label for="dateEntretien">Date entretien</label>
-            <input type="date" id="dateEntretien" name="dateEntretien">
+            <label for="dateEntretien">Date entretien *</label>
+            <input type="date" id="dateEntretien" name="dateEntretien" required>
           </div>
           <div class="form-group">
-            <label for="passageCAA">Passage CAA</label>
-            <input type="date" id="passageCAA" name="passageCAA">
+            <label for="passageCAA">Passage CAA *</label>
+            <input type="date" id="passageCAA" name="passageCAA" required>
           </div>
           <div class="form-group">
             <label for="misAJour">Mis à jour (date)</label>
@@ -68,7 +73,10 @@
             <input type="date" id="sCEC" name="sCEC">
           </div>
         </div>
-        <button type="submit" class="btn-submit">Ajouter la ligne</button>
+        <div class="form-actions">
+          <button type="submit" class="btn-submit" id="btnSubmit">Ajouter la ligne</button>
+          <button type="button" class="btn-cancel hidden" id="btnCancel">Annuler</button>
+        </div>
       </form>
     </section>
 
@@ -99,6 +107,7 @@
     </section>
   </div>
 
+  <script src="theme.js"></script>
   <script src="data.js"></script>
   <script src="script.js"></script>
 </body>

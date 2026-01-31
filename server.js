@@ -83,16 +83,32 @@ app.post('/api/entries', (req, res) => {
   }
 });
 
-// DELETE - Supprimer une entrée (optionnel)
-app.delete('/api/entries/:id', (req, res) => {
+// PUT - Modifier une entrée
+app.put('/api/entries/:id', (req, res) => {
   try {
-    let entries = getEntries();
-    entries = entries.filter(e => e.id !== req.params.id);
+    const entries = getEntries();
+    const index = entries.findIndex(e => e.id === req.params.id);
+    if (index === -1) {
+      return res.status(404).json({ error: 'Entrée non trouvée' });
+    }
+    entries[index] = {
+      ...entries[index],
+      prefecture: req.body.prefecture ?? entries[index].prefecture,
+      dateEntretien: req.body.dateEntretien ?? entries[index].dateEntretien,
+      passageCAA: req.body.passageCAA ?? entries[index].passageCAA,
+      misAJour: req.body.misAJour ?? entries[index].misAJour,
+      typeMisAJour: req.body.typeMisAJour ?? entries[index].typeMisAJour,
+      methodeMisAJour: req.body.methodeMisAJour ?? entries[index].methodeMisAJour,
+      passageCAE: req.body.passageCAE ?? entries[index].passageCAE,
+      complementCAA: req.body.complementCAA ?? entries[index].complementCAA,
+      complementCAE: req.body.complementCAE ?? entries[index].complementCAE,
+      sCEC: req.body.sCEC ?? entries[index].sCEC
+    };
     saveEntries(entries);
-    res.json({ success: true });
+    res.json(entries[index]);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Erreur lors de la suppression' });
+    res.status(500).json({ error: 'Erreur lors de la modification' });
   }
 });
 

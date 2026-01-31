@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rapports - CAA / CAE</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="main-nav">
+    <a href="/" class="nav-link">Formulaire</a>
+    <a href="/rapports.html" class="nav-link active">Rapports</a>
+    <button type="button" id="themeToggle" class="btn-theme" onclick="toggleTheme()" aria-label="Changer de thème">🌙 Mode sombre</button>
+  </nav>
+  <div class="container">
+    <header>
+      <h1>Rapports</h1>
+      <p class="subtitle">Filtrer et consulter les données par critères</p>
+    </header>
+
+    <section class="form-section filters-section">
+      <h2>Filtres</h2>
+      <div class="filters-grid">
+        <div class="form-group">
+          <label for="filterPrefecture">Préfecture</label>
+          <select id="filterPrefecture">
+            <option value="">Toutes</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="filterPassageCAE">Date passage CAE</label>
+          <input type="date" id="filterPassageCAE">
+        </div>
+        <div class="form-group">
+          <label for="filterMisAJour">Date mis à jour</label>
+          <input type="date" id="filterMisAJour">
+        </div>
+        <div class="form-group">
+          <label for="filterMethode">Méthode</label>
+          <select id="filterMethode">
+            <option value="">Toutes</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="filterSCEC">Date SCEC</label>
+          <input type="date" id="filterSCEC">
+        </div>
+        <div class="form-group filter-actions">
+          <button type="button" class="btn-submit" id="btnApply">Appliquer</button>
+          <button type="button" class="btn-reset" id="btnReset">Réinitialiser</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="table-section">
+      <h2>Résultats <span id="resultsCount" class="results-count"></span></h2>
+      <div class="table-wrapper">
+        <table class="entries-table">
+          <thead>
+            <tr>
+              <th>Préfecture</th>
+              <th>Date entretien</th>
+              <th>Passage CAA</th>
+              <th>Mis à jour</th>
+              <th>Type mis à jour</th>
+              <th>Méthode</th>
+              <th>Passage CAE</th>
+              <th>Complément CAA</th>
+              <th>Complément CAE</th>
+              <th>SCEC</th>
+            </tr>
+          </thead>
+          <tbody id="rapportsBody">
+          </tbody>
+        </table>
+      </div>
+      <p id="emptyRapports" class="empty-message">Aucun résultat. Ajustez les filtres ou ajoutez des données via le formulaire.</p>
+    </section>
+  </div>
+
+  <script src="theme.js"></script>
+  <script src="data.js"></script>
+  <script src="rapports.js"></script>
+</body>
+</html>

@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500&display=swap');
 
-:root {
+/* Mode sombre (par défaut) */
+:root,
+[data-theme="dark"] {
   --bg-dark: #0f1419;
   --bg-card: #1a2332;
   --bg-input: #242f3d;
@@ -12,6 +14,25 @@
   --border: #2d3a4a;
   --danger: #ef4444;
   --success: #22c55e;
+  --bg-gradient-1: rgba(59, 130, 246, 0.12);
+  --bg-gradient-2: rgba(34, 197, 94, 0.06);
+}
+
+/* Mode clair */
+[data-theme="light"] {
+  --bg-dark: #f1f5f9;
+  --bg-card: #ffffff;
+  --bg-input: #f8fafc;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --accent-muted: rgba(37, 99, 235, 0.15);
+  --text: #1e293b;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --danger: #dc2626;
+  --success: #16a34a;
+  --bg-gradient-1: rgba(37, 99, 235, 0.08);
+  --bg-gradient-2: rgba(22, 163, 74, 0.05);
 }
 
 * {
@@ -27,8 +48,57 @@ body {
   min-height: 100vh;
   line-height: 1.6;
   background-image: 
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 130, 246, 0.12), transparent),
-    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(34, 197, 94, 0.06), transparent);
+    radial-gradient(ellipse 80% 50% at 50% -20%, var(--bg-gradient-1), transparent),
+    radial-gradient(ellipse 60% 40% at 100% 100%, var(--bg-gradient-2), transparent);
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Navigation */
+.main-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1rem 2rem;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.nav-link:hover {
+  color: var(--accent);
+}
+
+.nav-link.active {
+  color: var(--accent);
+  background: var(--accent-muted);
+}
+
+.btn-theme {
+  margin-left: auto;
+  padding: 0.5rem 1rem;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-theme:hover {
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .container {
@@ -61,6 +131,7 @@ header h1 {
 .form-section,
 .table-section {
   background: var(--bg-card);
+  transition: background 0.3s, border-color 0.3s;
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 1.75rem;
@@ -130,7 +201,6 @@ header h1 {
 }
 
 .btn-submit {
-  margin-top: 1.25rem;
   padding: 0.75rem 1.5rem;
   background: var(--accent);
   color: white;
@@ -149,6 +219,42 @@ header h1 {
 
 .btn-submit:active {
   transform: scale(0.98);
+}
+
+.btn-reset {
+  padding: 0.6rem 1.2rem;
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-reset:hover {
+  color: var(--text);
+  border-color: var(--text-muted);
+}
+
+.filters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+  align-items: end;
+}
+
+.filter-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-direction: row;
+}
+
+.results-count {
+  font-weight: 400;
+  color: var(--text-muted);
+  font-size: 0.9em;
 }
 
 .table-wrapper {
@@ -207,6 +313,49 @@ header h1 {
   color: var(--danger);
   border-color: var(--danger);
   background: rgba(239, 68, 68, 0.1);
+}
+
+.btn-edit {
+  padding: 0.35rem 0.65rem;
+  background: var(--accent-muted);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-edit:hover {
+  background: var(--accent);
+  color: white;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.btn-cancel {
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-cancel:hover {
+  color: var(--text);
+  border-color: var(--text-muted);
+}
+
+.hidden {
+  display: none !important;
 }
 
 .empty-message {

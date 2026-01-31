@@ -33,8 +33,6 @@ const COMPLEMENTS = [
   'Relevé de compte',
   'Factures',
   'Titre de séjour',
-  'Carte vitale',
-  'Rib',
   'Autre'
 ];
 
@@ -50,8 +48,6 @@ const TYPES_MISE_A_JOUR = [
   'Décès',
   'Changement situation familiale',
   'Renouvellement',
-  'Naturalisation',
-  'Réfugié / Protection',
   'Autre'
 ];
 
