@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CAA / CAE - Suivi des entretiens</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Suivi CAA / CAE</h1>
+      <p class="subtitle">Formulaire de suivi des passages et compléments</p>
+    </header>
+
+    <section class="form-section">
+      <h2>Nouvelle entrée</h2>
+      <form id="entryForm" class="entry-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="prefecture">Préfecture</label>
+            <select id="prefecture" name="prefecture" required>
+              <option value="">-- Sélectionner --</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="dateEntretien">Date entretien</label>
+            <input type="date" id="dateEntretien" name="dateEntretien">
+          </div>
+          <div class="form-group">
+            <label for="passageCAA">Passage CAA</label>
+            <input type="date" id="passageCAA" name="passageCAA">
+          </div>
+          <div class="form-group">
+            <label for="misAJour">Mis à jour (date)</label>
+            <input type="date" id="misAJour" name="misAJour">
+          </div>
+          <div class="form-group">
+            <label for="typeMisAJour">Type de mis à jour</label>
+            <select id="typeMisAJour" name="typeMisAJour">
+              <option value="">-- Sélectionner --</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="methodeMisAJour">Méthode mis à jour</label>
+            <select id="methodeMisAJour" name="methodeMisAJour">
+              <option value="">-- Sélectionner --</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="passageCAE">Passage CAE</label>
+            <input type="date" id="passageCAE" name="passageCAE">
+          </div>
+          <div class="form-group">
+            <label for="complementCAA">Complément en CAA</label>
+            <select id="complementCAA" name="complementCAA">
+              <option value="">-- Sélectionner --</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="complementCAE">Complément en CAE</label>
+            <select id="complementCAE" name="complementCAE">
+              <option value="">-- Sélectionner --</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="sCEC">SCEC</label>
+            <input type="date" id="sCEC" name="sCEC">
+          </div>
+        </div>
+        <button type="submit" class="btn-submit">Ajouter la ligne</button>
+      </form>
+    </section>
+
+    <section class="table-section">
+      <h2>Historique des entrées</h2>
+      <div class="table-wrapper">
+        <table class="entries-table">
+          <thead>
+            <tr>
+              <th>Préfecture</th>
+              <th>Date entretien</th>
+              <th>Passage CAA</th>
+              <th>Mis à jour</th>
+              <th>Type mis à jour</th>
+              <th>Méthode</th>
+              <th>Passage CAE</th>
+              <th>Complément CAA</th>
+              <th>Complément CAE</th>
+              <th>SCEC</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="entriesBody">
+          </tbody>
+        </table>
+      </div>
+      <p id="emptyMessage" class="empty-message">Aucune entrée pour le moment. Remplissez le formulaire pour ajouter une ligne.</p>
+    </section>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
